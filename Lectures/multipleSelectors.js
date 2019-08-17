@@ -1,5 +1,5 @@
 //Multiple selectors returns a collection or a node list which are similar to arrays 
-// but they are not and need to be converted to array
+// but they are not and need to be converted to array to be able to use array methods
 
 // const items = document.getElementsByClassName('collection-item')
 
@@ -21,7 +21,7 @@
 // //convert html collection into an array
 
 
-// items = Array.from(items);
+// items = Array.from(items); //this changes the collection into an array
 // console.log(items);
 // items.forEach(item => {
 //     console.log(item.className);
