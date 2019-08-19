@@ -4,18 +4,18 @@ const posts = [
   ];
   
   function createPost(post) {
+    // need to instantiate the promise with the new keyword--it takes in a callback fuction with 2 parameters: resolve and reject. 
     return new Promise(function(resolve, reject) {
       setTimeout(function() {
         //mimic an error by changing to false...this is only for demo to see how error works!
         const error = false; //change value to false for the post to work/ true to trigger error
         if (!error) {
           posts.push(post);
-          resolve();
+          resolve();//returns the promise once it's resolved
         } else {
           reject('Something went wrong');
         }
-  
-        resolve();
+        resolve();//the conditional requires either a resolve or a reject of the promise and once that is done, resolve is called again 
       }, 2000);
     });
   }

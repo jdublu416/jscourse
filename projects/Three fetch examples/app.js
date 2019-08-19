@@ -38,6 +38,7 @@ function getJson() {
 }
 
 function getAPIData(){
+  // an example of the github api, it takes in a URL, then the response is formatted to json
   fetch('https://api.github.com/users')
     .then(res => {
       return res.json();
