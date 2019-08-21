@@ -41,4 +41,57 @@ class UI {
     <div id="repos"></div>
     `;
   }
+
+  showRepos(repos){
+    let output = '';
+    repos.forEach((repo) =>{
+        output += `
+        <div class='card card-body mb-2'>
+            <div class='row'>
+            <div class='col-md-6'>
+                <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+             </div>
+            <div class='col-md-6'>
+            <span class="badge badge-block badge-primary p-1"><small>Stars: ${
+                repo.stargazers_count
+                }</small></span>
+                <span class="badge badge-block badge-secondary p-1"><small>Watchers: ${
+                repo.watchers_count
+                }</small></span>
+                <span class="badge badge-block badge-success p-1"><small>Forks: ${
+                repo.forks_count
+                }</small></span>
+            </div>
+            </div>
+        </div>
+        `;
+    });
+    //output repositories
+    document.getElementById('repos').innerHTML = output;
+  }
+
+  showAlert(message, className){// to show alert message: create a div, add classname to the div, add text to div, get the parent of where you want to insert the alert, get search box, use insertBefore(what you want to insert, what you are inserting 'before')on parent(container)
+        this.clearAlert();
+        const div = document.createElement('div');
+        div.className = className;
+        div.appendChild(document.createTextNode(message));
+        const container = document.querySelector('.searchContainer');
+        const search = document.querySelector('.search');
+        container.insertBefore(div, search);
+        //timeout after 3 sec
+        setTimeout(()=> {
+            this.clearAlert();
+        }, 2000);
+  }
+
+  clearAlert(){
+      const currentAlert = document.querySelector('.alert');
+      if(currentAlert){
+          currentAlert.remove();
+      }
+  }
+
+  clearProfile(){
+      this.profile.innerHTML = '';
+  }
 }
